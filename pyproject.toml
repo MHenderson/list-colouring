@@ -10,6 +10,7 @@ packages = [{include = "list_colouring"}]
 [tool.poetry.dependencies]
 python = "^3.11"
 networkx = "^3.1"
+matplotlib = "^3.7.2"
 
 
 [build-system]

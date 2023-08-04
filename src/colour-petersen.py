@@ -1,13 +1,14 @@
 import random
 
 import networkx as nx
+import matplotlib.pyplot as plt
 
 random.seed(0)
 
 G = nx.petersen_graph()
 
 # create a global list of colours
-colours = range(0, 3)
+colours = range(0, 10)
 
 # assign a random subset of colours to the list of permissible colours for every edge
 for u, v, permissible in G.edges.data("permissible"):
@@ -48,3 +49,14 @@ for n, nbrs in G.adj.items():
        perm = eattr['permissible']
        col = eattr['colour']
        print(f"({n}, {nbr}, {perm}, {col})")
+
+options = {
+ 'with_labels': True,
+ 'node_color': "white"
+}
+
+# this won't work if there is an uncoloured edge (i.e. None)
+colors = nx.get_edge_attributes(G,'colour').values()
+
+nx.draw_shell(G, nlist = [range(5, 10), range(5)], edge_color = colors, **options)
+plt.savefig("img/petersen-shell.png", format = "PNG")
