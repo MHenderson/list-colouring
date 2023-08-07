@@ -1,4 +1,4 @@
-# list-colouring
+# listcolouring
 List colouring in Python with NetworkX.
 
 ```
