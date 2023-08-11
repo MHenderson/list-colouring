@@ -1,7 +1,11 @@
-all: colour
+install:
+	poetry install
 
-demo: src/demo.py
-	poetry run python $<
+test:
+	poetry run pytest
 
-colour: src/colour-petersen.py
-	poetry run python $<
+build:
+	poetry build
+
+publish:
+	poetry publish

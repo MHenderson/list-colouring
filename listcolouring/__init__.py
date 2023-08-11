@@ -6,7 +6,7 @@ def list_init(G, colours, k, seed):
     random.seed(seed)
     # assign a random subset of colours to the list of permissible colours for every edge
     for u, v, permissible in G.edges.data("permissible"):
-        G[u][v]["permissible"] = random.sample(colours, 3)
+        G[u][v]["permissible"] = random.sample(colours, k)
         
     # initialise the colour of every edge to None
     for u, v, colour in G.edges.data("colour"):

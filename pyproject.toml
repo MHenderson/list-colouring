@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "listcolouring"
-version = "0.1.1"
+version = "0.1.2"
 description = "List colouring in Python with NetworkX."
 authors = ["Matthew Henderson <matthew.james.henderson@gmail.com>"]
 license = "MIT"
