@@ -1,6 +1,6 @@
 # listcolouring (development version)
 
-# listcolouring (v0.1.0)
+# listcolouring (v0.1.3)
 
 * Greedy list-edge colouring.
 * First permissible or none strategy.
