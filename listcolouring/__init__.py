@@ -13,6 +13,18 @@ def list_init(G, colours, k, seed):
 
     return(G)
 
+def list_init_node(G, colours, k, seed):
+    """Assign a random subset of k colours to the list of permissible colours for every node of G."""
+    random.seed(seed)
+
+    permissible_colours = [random.sample(colours, k) for i in range(G.order())]
+    permissible_dict = dict(zip(G.nodes, permissible_colours))
+
+    nx.set_node_attributes(G, permissible_dict, "permissible")
+    nx.set_node_attributes(G, None, "colour")
+
+    return(G)
+
 def colours_incident_with(G, u):
     """The list of colours on edges incident with vertex u in graph G."""
     return(set([G[u][v]["colour"] for v in nx.neighbors(G, u)]))
