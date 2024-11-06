@@ -29,6 +29,10 @@ def colours_incident_with(G, u):
     """The list of colours on edges incident with vertex u in graph G."""
     return(set([G[u][v]["colour"] for v in nx.neighbors(G, u)]))
 
+def colours_on_neighbours(G, n):
+    """The set of all colours on neighbours of a node n in a graph G."""
+    return(set([nx.get_node_attributes(G, "colour")[m] for m in G.neighbors(n)]))
+
 def first_permissible_or_none(G, u, v):
     """
     Returns the first element of A if A is non-empty otherwise returns None.
