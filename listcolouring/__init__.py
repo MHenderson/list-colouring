@@ -72,6 +72,13 @@ def greedy_list_edge_colouring(G):
         G[u][v]["colour"] = first_permissible_or_none(G, u, v) # random.choice(colours)
     return(G)
 
+def greedy_list_node_colouring(G):
+    """Assign the first permissible colour to every node (or None if all permissible
+    colours already used on incident edges)."""
+    for u in G.nodes:
+        G.nodes[u]["colour"] = first_permissible_or_none_node(G, u)
+    return(G)
+
 def print_list_edge_colouring(G):
     """Print assigned colours and lists of permissible colours for all edges in G."""
     for n, nbrs in G.adj.items():
