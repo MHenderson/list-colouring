@@ -77,11 +77,18 @@ def greedy_list_edge_colouring(G):
         G[u][v]["colour"] = first_permissible_or_none(G, u, v) # random.choice(colours)
     return(G)
 
-def greedy_list_node_colouring(G):
-    """Assign the first permissible colour to every node (or None if all permissible
-    colours already used on incident edges)."""
+def greedy_list_node_colouring(G, edges = False):
+    """Assign the first permissible colour to every node or None if all permissible
+    colours already used on neighbouring nodes (and incident edges if edges = True)."""
     for u in G.nodes:
-        G.nodes[u]["colour"] = first_permissible_or_none_node(G, u)
+        G.nodes[u]["colour"] = first_permissible_or_none_node(G, u, edges)
+    return(G)
+
+def greedy_list_total_colouring(G):
+    """Use a greedy strategy to colour the edges of G and then use a greedy node colouring
+    strategy to colour the nodes of G."""
+    G = greedy_list_edge_colouring(G)
+    G = greedy_list_node_colouring(G, edges = True)
     return(G)
 
 def print_list_edge_colouring(G):
