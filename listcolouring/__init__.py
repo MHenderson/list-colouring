@@ -51,12 +51,17 @@ def first_permissible_or_none(G, u, v):
         choice = None
     return(choice)
 
-def first_permissible_or_none_node(G, u):
+def first_permissible_or_none_node(G, u, edges = False):
     """ Returns the first element of A = P - X if A is non-empty otherwise returns None.
-        X is the list of colours on neighbours of u.
-        P is the list of permissible colours for node u.
+    X is the list of colours on neighbours of u if edges = False and the union of
+    the list of colours on neighbours of u and the list of colours on edges incident
+    with u if edges = True.
+    P is the list of permissible colours for node u.
     """
-    X = colours_on_neighbours(G, u)
+    if edges:
+        X = colours_on_neighbours(G, u).union(colours_incident_with(G, u))
+    else:
+        X = colours_on_neighbours(G, u)
     P = set(G.nodes[u]["permissible"])
     choices = P - X
     if(len(choices) > 0):

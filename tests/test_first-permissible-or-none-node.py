@@ -11,3 +11,7 @@ def test_first_permissible_or_none_node():
     assert first_permissible_or_none_node(G, 0) == 0
     assert first_permissible_or_none_node(G, 1) == 1
     assert first_permissible_or_none_node(G, 2) == 2
+    nx.set_edge_attributes(G, 2, "colour")
+    assert first_permissible_or_none_node(G, 0, edges = True) == 0
+    assert first_permissible_or_none_node(G, 1, edges = True) == 1
+    assert first_permissible_or_none_node(G, 2, edges = True) == 3
